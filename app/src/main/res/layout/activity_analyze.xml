@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:elevation="2dp">
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="#0F172A" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Analyze Patient Report"
+            android:textColor="#0F172A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_above="@+id/bottomNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Patient Information -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Information"
+                android:textColor="#0F172A"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient Name" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etPatientName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. Rahul Verma" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 45 Yrs" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gender" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <Spinner android:id="@+id/spGender" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:padding="12dp" android:entries="@array/gender_options"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient ID" android:textSize="12sp" android:layout_marginTop="12dp" android:layout_marginBottom="4dp"/>
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. PT-2023-894" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Blood Parameters -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Parameters"
+                android:textColor="#0F172A"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="White Blood Cell Count (WBC)" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="4.5 - 11.0 10^9/L" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Red Blood Cell Count (RBC)" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="4.7 - 6.1 10^12/L" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hemoglobin" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="13.8 - 17.2 g/dL" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Platelet Count" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="150 - 450 k/μL" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ESR" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0 - 22 mm/hr" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C-Reactive Protein (CRP)" android:textSize="12sp" android:layout_marginTop="12dp" android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etCrpLevel" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 28 mg/L" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Biomarker Values -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Biomarker Values"
+                android:textColor="#0F172A"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Oral Lesion Size" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etLesionSize" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0.0 mm" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell Abnormality" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etAbnormalityScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0 - 10 /10" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dysplasia Grade" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etDysplasiaGrade" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 3" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ki-67 Index" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etKi67Index" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 70" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="p53 Expression" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etP53Expression" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 82" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EGFR Expression" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etEgfrExpression" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. 88" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tissue Density" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                        <EditText android:id="@+id/etDensityScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0 - 100 %" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Inflammatory Marker Level" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etInflammatoryMarker" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0.0 mg/L" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:textSize="14sp"/>
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancer Biomarker Index" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etBiomarkerIndex" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="0.0 - 10.0 Idx" android:inputType="numberDecimal" android:background="@drawable/edit_text_bg" android:padding="12dp" android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Risk Factors -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Risk Factors"
+                android:textColor="#0F172A"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Smoking History" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/spSmokingHistory" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:entries="@array/yes_no_options"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tobacco Chewing Frequency" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/spTobaccoFrequency" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:entries="@array/frequency_options"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alcohol Consumption" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/spAlcoholConsumption" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:padding="12dp" android:layout_marginBottom="12dp" android:entries="@array/alcohol_options"/>
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Family History of Cancer" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/spFamilyHistory" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:padding="12dp" android:entries="@array/yes_no_options"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/analyzeReportBtn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Analyze Report"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#2563EB"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="8dp" />
+                
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Mock -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:elevation="8dp">
+        
+        <LinearLayout
+            android:id="@+id/navDashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_crop"
+                app:tint="#94A3B8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:textSize="10sp"
+                android:textColor="#94A3B8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navAnalyze"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_search"
+                app:tint="#2563EB" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Analyze"
+                android:textSize="10sp"
+                android:textColor="#2563EB" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navReports"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                app:tint="#94A3B8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reports"
+                android:textSize="10sp"
+                android:textColor="#94A3B8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_manage"
+                app:tint="#94A3B8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="10sp"
+                android:textColor="#94A3B8" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
