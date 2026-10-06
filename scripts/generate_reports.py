@@ -4,10 +4,6 @@ from openpyxl.utils import get_column_letter
 import os
 import random
 
-def create_styled_workbook():
-    wb = openpyxl.Workbook()
-    return wb
-
 # Common Styling Definitions
 font_title = Font(name="Segoe UI", size=16, bold=True, color="FFFFFF")
 font_section = Font(name="Segoe UI", size=13, bold=True, color="1F497D")
@@ -141,7 +137,7 @@ def generate_all_excel_reports(output_dir="reports"):
     modules_perf = ["Concurrent Peak Load (500 users)", "API Response Latency (<200ms)", "AI Model Inference Speed (<1.5s)", "Memory Footprint Benchmark"]
     modules_dep = ["App Bundle Build Check (.apk / web)", "Environment Config & Secrets Check", "Database Migration Integrity", "SSL TLS Handshake Check"]
 
-    # 1. Build Individual Excel Artifacts (300 Test Cases each)
+    # Build Individual Excel Artifacts ONLY (.xlsx)
     build_suite_excel(os.path.join(output_dir, "appium-android-report.xlsx"), "Appium Android Tests", "Appium — Android Native App Test Report (300 Test Cases)", "MOB", 300, modules_mobile)
     build_suite_excel(os.path.join(output_dir, "selenium-web-report.xlsx"), "Selenium Website Tests", "Selenium — Web Application Test Report (300 Test Cases)", "WEB", 300, modules_web)
     build_suite_excel(os.path.join(output_dir, "unit-test-report.xlsx"), "Unit Tests API", "Unit Tests — Backend REST API Test Report (300 Test Cases)", "API", 300, modules_api)
@@ -149,7 +145,7 @@ def generate_all_excel_reports(output_dir="reports"):
     build_suite_excel(os.path.join(output_dir, "load-test-report.xlsx"), "Load Performance Tests", "Load & Performance Benchmark Test Report (300 Test Cases)", "PERF", 300, modules_perf)
     build_suite_excel(os.path.join(output_dir, "deployment-test-report.xlsx"), "Deployment Status", "Deployment Status Verification Report (300 Test Cases)", "DEP", 300, modules_dep)
 
-    # 2. Build Full Master Excel Workbook (1800 Test Cases across all sheets)
+    # Build Full Master Excel Workbook (.xlsx)
     wb_master = openpyxl.Workbook()
     ws_sum = wb_master.active
     ws_sum.title = "Executive Summary"
@@ -162,7 +158,7 @@ def generate_all_excel_reports(output_dir="reports"):
     title_cell.fill = fill_navy
     title_cell.alignment = align_center
 
-    ws_sum["A4"] = "Run Information & GitHub Actions Artifacts"
+    ws_sum["A4"] = "Run Information & GitHub Actions Excel Artifacts"
     ws_sum["A4"].font = font_section
 
     meta_data = [
@@ -240,10 +236,10 @@ def generate_all_excel_reports(output_dir="reports"):
             ws_sum.cell(row=r, column=c).fill = fill_summary_bg
 
     r += 3
-    ws_sum.cell(row=r, column=1, value="Artifact SHA256 Digests (GitHub Actions)").font = font_section
+    ws_sum.cell(row=r, column=1, value="Excel Artifact Files (.xlsx)").font = font_section
     r += 1
 
-    art_headers = ["Artifact Name", "File Format", "SHA-256 Digest"]
+    art_headers = ["Artifact Name", "File Format", "Excel Sheet Name"]
     for c_idx, h in enumerate(art_headers, 1):
         cell = ws_sum.cell(row=r, column=c_idx, value=h)
         cell.font = font_header
@@ -253,13 +249,13 @@ def generate_all_excel_reports(output_dir="reports"):
     r += 1
 
     artifacts = [
-        ("appium-android-report", "Excel Sheet (.xlsx)", "sha256:3a13fa1e6d1dd83c2332726c2a615ec30e35f56c6a9"),
-        ("selenium-web-report", "Excel Sheet (.xlsx)", "sha256:29f2b745dea940f4976eca6cbc95fbf44065aae6889"),
-        ("unit-test-report", "Excel Sheet (.xlsx)", "sha256:5f5aec0d9c579b78555cb181a23c82ca173072e365d"),
-        ("validation-test-report", "Excel Sheet (.xlsx)", "sha256:ee8b4a0513e4e4b36757c859a23af7c355abeb34dab"),
-        ("load-test-report", "Excel Sheet (.xlsx)", "sha256:8bb58a1e25c450f1848141b4b07c97c67085a0af097"),
-        ("deployment-test-report", "Excel Sheet (.xlsx)", "sha256:65c2be0d1b7b50685b4df32a67e2060cb4edc8c83ca"),
-        ("full-e2e-report", "Excel Sheet (.xlsx)", "sha256:ff529cb1597e4e3b8ae597182a1071db63fefbe7ae6")
+        ("appium-android-report.xlsx", "Microsoft Excel (.xlsx)", "Appium Android Tests"),
+        ("selenium-web-report.xlsx", "Microsoft Excel (.xlsx)", "Selenium Website Tests"),
+        ("unit-test-report.xlsx", "Microsoft Excel (.xlsx)", "Unit Tests API"),
+        ("validation-test-report.xlsx", "Microsoft Excel (.xlsx)", "Validation Tests"),
+        ("load-test-report.xlsx", "Microsoft Excel (.xlsx)", "Load Performance Tests"),
+        ("deployment-test-report.xlsx", "Microsoft Excel (.xlsx)", "Deployment Status"),
+        ("full-e2e-report.xlsx", "Microsoft Excel (.xlsx)", "Executive Summary + All Suites")
     ]
 
     for name, sz, digest in artifacts:
@@ -318,12 +314,12 @@ def generate_all_excel_reports(output_dir="reports"):
 
     autofit_columns(wb_master)
 
-    # Save Master Excel copies
+    # Save Master Excel copies (.xlsx ONLY)
     wb_master.save(os.path.join(output_dir, "full-e2e-report.xlsx"))
     wb_master.save(os.path.join(output_dir, "Mobile_and_Web_App_Test_Report_300_TestCases.xlsx"))
     wb_master.save(os.path.join(output_dir, "Test_Execution_Report_300_TestCases.xlsx"))
 
-    print(f"Successfully generated all Excel report artifacts in '{output_dir}'.")
+    print(f"Generated EXCEL ONLY test reports in '{output_dir}'.")
 
 if __name__ == "__main__":
     generate_all_excel_reports("reports")
