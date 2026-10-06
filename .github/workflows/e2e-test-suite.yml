@@ -31,11 +31,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 Website Test Cases PASSED"
 
-      - name: Upload Selenium Web Report Artifact
+      - name: Upload Selenium Web Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: selenium-web-report
-          path: reports/selenium-web-report.json
+          path: reports/selenium-web-report.xlsx
 
   appium-android-tests:
     name: Appium — Android Tests (300)
@@ -60,11 +60,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 Mobile Android Test Cases PASSED"
 
-      - name: Upload Appium Android Report Artifact
+      - name: Upload Appium Android Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: appium-android-report
-          path: reports/appium-android-report.json
+          path: reports/appium-android-report.xlsx
 
   unit-tests-api:
     name: Unit Tests — API (300)
@@ -89,11 +89,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 API Unit Test Cases PASSED"
 
-      - name: Upload Unit Test Report Artifact
+      - name: Upload Unit Test Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: unit-test-report
-          path: reports/unit-test-report.json
+          path: reports/unit-test-report.xlsx
 
   validation-tests:
     name: Validation Tests (300)
@@ -118,11 +118,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 Validation Test Cases PASSED"
 
-      - name: Upload Validation Test Report Artifact
+      - name: Upload Validation Test Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: validation-test-report
-          path: reports/validation-test-report.json
+          path: reports/validation-test-report.xlsx
 
   deployment-status:
     name: Deployment Status (300)
@@ -147,11 +147,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 Deployment Verification Checks PASSED"
 
-      - name: Upload Deployment Test Report Artifact
+      - name: Upload Deployment Test Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: deployment-test-report
-          path: reports/deployment-test-report.json
+          path: reports/deployment-test-report.xlsx
 
   load-testing:
     name: Load Testing — Performance (300)
@@ -176,11 +176,11 @@ jobs:
           python scripts/generate_reports.py
           echo "✅ 300/300 Performance Tests PASSED"
 
-      - name: Upload Load Test Report Artifact
+      - name: Upload Load Test Report Excel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: load-test-report
-          path: reports/load-test-report.json
+          path: reports/load-test-report.xlsx
 
   compile-master-report:
     name: Compile Master Report & Deploy
@@ -206,15 +206,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Generate Master Excel & JSON Artifacts
+      - name: Generate Master Excel Artifacts
         run: |
           python scripts/generate_reports.py
 
-      - name: Upload Full E2E Report Artifact
+      - name: Upload Full E2E Excel Report Artifact
         uses: actions/upload-artifact@v4
         with:
           name: full-e2e-report
-          path: reports/full-e2e-report.json
+          path: reports/full-e2e-report.xlsx
 
       - name: Upload Master Excel Test Reports
         uses: actions/upload-artifact@v4
